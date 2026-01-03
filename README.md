@@ -8,6 +8,7 @@
 An interactive web app showcasing the top 12 doom metal, stoner rock, and heavy psych albums of 2025, as featured on [DoomCharts.com](https://doomcharts.com).
 
 🔗 **Live Demo:** [https://lrrecords.github.io/doomcharts-2025/](https://lrrecords.github.io/doomcharts-2025/)
+**LRRECORDS** [https://lrrecords.com.au/doomcharts-number1albums-2025](https://lrrecords.com.au/doomcharts-number1albums-2025)
 
 ---
 
@@ -249,7 +250,7 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 **Questions?  Feedback?**
 
 - 🌐 Website: [lrrecords.com.au](https://lrrecords.com.au)
-- 📧 Email: contact@lrrecords.com. au
+- 📧 Email: brett@lrrecords.com. au
 - 🐦 Twitter: [@lrrecords](https://twitter.com/lrrecords)
 
 ---
