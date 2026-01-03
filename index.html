@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DoomCharts 2025 Number One Albums</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel&family=Metal+Mania&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <style>
+    :root {
+      --background: #121212;
+      --card-bg: #1e1e1e;
+      --text-color: #e0e0e0;
+      --accent-color: #ff0000;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Cinzel', serif;
+      background-color: var(--background);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 0;
+    }
+
+    .header {
+      text-align: center;
+      padding: 20px;
+      background: var(--card-bg);
+      color: var(--accent-color);
+    }
+
+    .header h1 {
+      font-family: 'Metal Mania', cursive;
+      font-size: 3em;
+      margin: 10px 0;
+      color: var(--accent-color);
+    }
+
+    .header p {
+      margin: 10px 0;
+      color: var(--text-color);
+    }
+
+    .header-social {
+      margin-top: 15px;
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .album-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      padding: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .album-card {
+      background: var(--card-bg);
+      color: var(--text-color);
+      border: 1px solid var(--accent-color);
+      border-radius: 5px;
+      overflow: hidden;
+      width: calc(50% - 10px);
+      max-width: 550px;
+      min-width: 300px;
+      transition: transform 0.2s;
+    }
+
+    .album-card:hover {
+      transform: scale(1.02);
+    }
+
+    .album-header {
+      background: var(--accent-color);
+      color: var(--background);
+      padding: 15px;
+      text-align: center;
+    }
+
+    .album-header h2 {
+      margin: 0 0 10px 0;
+      font-size: 1.3em;
+      color: var(--background);
+    }
+
+    .album-content {
+      padding: 15px;
+      max-height: 600px;
+      overflow-y: auto;
+    }
+
+    .album-content::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    .album-content::-webkit-scrollbar-track {
+      background: var(--background);
+    }
+
+    .album-content::-webkit-scrollbar-thumb {
+      background: var(--accent-color);
+      border-radius: 4px;
+    }
+
+    .review-section {
+      margin-bottom: 15px;
+    }
+
+    .review-section strong {
+      color: var(--accent-color);
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .album-content p {
+      font-size: 0.9em;
+      margin-bottom: 1em;
+      line-height: 1.7;
+      color: var(--text-color);
+    }
+
+    .album-content p:last-of-type {
+      margin-bottom: 0;
+    }
+
+    .month-badge {
+      display: inline-block;
+      background: var(--background);
+      color: var(--accent-color);
+      padding: 5px 12px;
+      border-radius: 3px;
+      font-size: 0.85em;
+      font-family: 'Cinzel', serif;
+      font-weight: bold;
+    }
+
+    .bandcamp-embed {
+      margin: 15px 0;
+    }
+
+    .bandcamp-embed iframe {
+      border: 0;
+      width: 100%;
+      height: 120px;
+    }
+
+    .social-share {
+      margin-top: 15px;
+      text-align: center;
+    }
+
+    .btn-share {
+      background: transparent;
+      border: 2px solid var(--accent-color);
+      padding: 8px 15px;
+      color: var(--text-color);
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 3px;
+      transition: all 0.3s;
+      display: inline-block;
+      font-size: 0.9em;
+    }
+
+    .btn-share:hover {
+      background: var(--accent-color);
+      color: var(--background);
+      cursor: pointer;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 30px 20px;
+      background: var(--card-bg);
+      color: var(--text-color);
+      margin-top: 40px;
+    }
+
+    .footer a {
+      color: var(--accent-color);
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+
+    .loading {
+      text-align: center;
+      padding: 40px;
+      color: var(--accent-color);
+      font-size: 1.2em;
+    }
+
+    @media (max-width: 768px) {
+      .album-card {
+        width: 100%;
+      }
+      
+      .header h1 {
+        font-size: 2em;
+      }
+
+      .album-content {
+        max-height: 500px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="header">
+    <h1>DoomCharts Top Albums of 2025</h1>
+    <p>An epic journey into the heaviest, sludgiest, grooviest albums of 2025.</p>
+    <div class="header-social">
+      <a href="#" class="btn-share" target="_blank" id="twitter-share">Share on Twitter</a>
+      <a href="#" class="btn-share" target="_blank" id="facebook-share">Share on Facebook</a>
+      <a href="#" class="btn-share" target="_blank" id="reddit-share">Share on Reddit</a>
+    </div>
+  </header>
+
+  <main>
+    <div id="albums" class="album-container">
+      <div class="loading">Loading albums... 🎸</div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>Built by <a href="https://lrrecords.com.au" target="_blank">LRRecords</a> for the love of great heavy music! 🤘</p>
+    <p style="font-size: 0.9em; margin-top: 10px;">Data scraped from <a href="https://doomcharts.com" target="_blank">DoomCharts.com</a></p>
+  </footer>
+
+  <script>
+    const albumData = {"doomcharts_number_one_albums":[{"album_title":"DUNES – LAND OF THE BLIND","album_title_citation":"https://doomcharts.com/2025/02/07/doom-charts-january-2025/","bandcamp_link":"https://ripplemusic.bandcamp.com/album/land-of-the-blind","bandcamp_embed_code":"<iframe style=\"border: 0; width: 100%; height: 120px;\" src=\"https://bandcamp.com/EmbeddedPlayer/v=2/album=3162445547/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=small/\" seamless><a href=\"https://ripplemusic.bandcamp.com/album/land-of-the-blind\">LAND OF THE BLIND by DUNES</a></iframe>","doomcharts_review_text":"First, second, third and fourth impression:  it's impossible to sit still when this gem is spinning, yet it also packs more that enough punch to get your rock juices flowing.  DUNES produces some melodic, bluesy stoner with clean vocals that can be considered the ideal soundtrack to a garden party in the heart of summer with the BBQ smoking hot and the amp turned up to eleven. The only risk:  the music is so goddamn catchy the neighbours will start complaining it still isn't loud enough.  ~ Ronny Dijksterhuis ( Stoner HiVe )\n\nThis album came as a surprise for me because I've never heard of this band before.  I've listened to the album more than five times by now!  They play a classic stoner with clean vocal, heavy guitar riffs and a solid fuzzy sound. What I like about the disc is the tempo and the unique atmosphere of the compositions :  comfortable and healing for the soul. A very positive and furious energy that deserves to be spread all over the stoner world!  Let's dive into this awesome trip in the burning desert of the Dune universe. Land Of The Blind will be on my 2025 list, that's for sure!  ~ Edouard Dubuisson ( Les chroniques d'Eddy , MetalUniverse )"},{"album_title":"NAXATRAS – V","album_title_citation":"https://doomcharts.com/2025/03/07/doom-charts-february-2025/","bandcamp_link":"https://naxatras.bandcamp.com/album/v","bandcamp_embed_code":"<iframe style=\"border: 0; width: 100%; height: 120px;\" src=\"https://bandcamp.com/EmbeddedPlayer/v=2/album=3326020498/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=small/\" seamless><a href=\"https://naxatras.bandcamp.com/album/v\">V by NAXATRAS</a></iframe>","doomcharts_review_text":"The Greek Gods of modern psychedelic rock/space rock NAXATRAS are back with their fifth album and what a blast!  What I love about this band is that they can evolve in their own musical universe and they are getting better records after records. The keyboards give a futuristic sound close to the synth-rock universe and it gives an epic trip to the listener.  Thrilling bass, Gilmorian guitar solos and a 70's progressive rock side, this album is such an unique experience. V is simply pure awesomeness of modern psychedelia and definitely a serious contender to the psych'/space rock AOTY. Get ready to live an exciting experience with this masterpiece of blend of genres and with a touch of world music (greek/turkish/egyptian). ~ Edouard Dubuisson ( Les chroniques d'Eddy , MetalUniverse )\n\nThe Greek quartet continues their endless research on a progressive and more cosmic path.  Introducing more elements of kosmiche music, the band is seduced by paths that explore sounds of Anatolian rock, making their songs maintain those oriental tones that we had already found in their previous albums, even increasing them.  This new album represents a new advance in the expansion of their music, making their sound increasingly progressive and experimental. Their hypnotic touches of world music are adorned with some electronic elements and their usual metal-flavored riffs.  This new chapter is captured in a conceptual narrative that elevates their songs to an Olympus worthy of the gods.  These immersive songs capture the band's creativity in a wonderful, exotic, sidereal, but above all, beautiful sound realm. ~ Roberto Lucas ( Denpa Fuzz )"},{"album_title":"KRYPTOGRAF – KRYPTONOMICON","album_title_citation":"https://doomcharts.com/2025/04/04/doom-charts-march-2025/","bandcamp_link":"https://kryptograf.bandcamp.com/album/kryptonomicon","bandcamp_embed_code":"<iframe style=\"border: 0; width: 100%; height: 120px;\" src=\"https://bandcamp.com/EmbeddedPlayer/v=2/album=3057785579/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=small/\" seamless><a href=\"https://kryptograf.bandcamp.com/album/kryptonomicon\">KRYPTONOMICON by KRYPTOGRAF</a></iframe>","doomcharts_review_text":"On their highly-anticipated album Kryptonomicon, Bergen-based doom rockers KRYPTOGRAF embark upon a nautical voyage.  The sunny skies and smooth sailing tend to be short-lived, and tempestuous waters carry our minstrels through a hard-fought battle with the water-dwelling inhabitants of the underworld. Blood will be spilled, souls will be claimed, and heavy truths will be discovered, all to the tune of the most beautifully layered rendition of KRYPTOGRAF'S brand of doomy retro rock yet.  In spite of its relative brevity, Kryptonomicon sounds like an album that was developed over a long period of time, gaining odds and ends like a folk tale and aging like a fine wine, allowing intricate details to blossom naturally. Here, KRYPTOGRAF proves that they possess the instrumental aptitude, songwriting prowess, and incredible storytelling abilities to allow them to sail well beyond the horizon into any direction they choose. ~ Stephanie Zalta ( DoomCakes , Screaming From The Heavy Underground )\n\nKRYPTOGRAF returns, keeping the sound that gave them birth intact, in a heavier and more complex, but equally attractive, effort.  Focusing on a deeper approach to melodies, KRYPTOGRAF immerses us in a well of heavy vibrations with an evident vintage aroma.  Taking progressive elements to give shine to their forceful songs, the quartet confirms that they are not a fleeting band, but a group that delves into their songs so that they have a contemporary aspect, thus moving away from certain conventions that their classic 70s hard-rock songs may suggest. ~ Roberto Lucas ( Denpa Fuzz )"},{"album_title":"TEMPLE FANG – LIFTED FROM THE WIND","album_title_citation":"https://doomcharts.com/2025/05/02/doom-charts-april-2025/","bandcamp_link":"https://templefang.bandcamp.com/album/lifted-from-the-wind","bandcamp_embed_code":"<iframe style=\"border: 0; width: 100%; height: 120px;\" src=\"https://bandcamp.com/EmbeddedPlayer/v=2/album=3767727710/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=small/\" seamless><a href=\"https://templefang.bandcamp.com/album/lifted-from-the-wind\">LIFTED FROM THE WIND by TEMPLE FANG</a></iframe>","doomcharts_review_text":"Ever masters of the expansive and perpetually evolving heavy psych jam, TEMPLE FANG is back with what they consider to be their true debut studio album, Lifted from the Wind. This album showcases the band's irrefutably organic creative process in which each track unfurls at a most natural pace while expertly utilizing cinematic but clear-cut chapters to each song. Also true to form, the overall sound has an atmospheric backbone but illustrates the more momentous acts with heart-pounding intensity; never overly heavy or coarse, but always with an authentic sense of apprehension or passion (whichever the situation calls for). Lifted from the Wind also features more of a futuristic, spacey prog rock tone, adding both a refreshing new vibe and even more intricacies, twists, and turns to TEMPLE FANG'S labyrinth of sound. ~ Stephanie Zalta ( DoomCakes , Screaming From The Heavy Underground )\n\nA spiritual trance that traps the listener in a cosmic ceremony ideal for expanding the mind.  A true ritual in which the band creates the music that comes from their hearts without looking any further.  Its meditative instrumental passages and occasional vocals make this album a Holy Grail for any lover of contemplative psychedelia. Music that penetrates the listener's nerve endings, stimulating them with fascinating sensations in the form of long songs.  Rock can be about energy, but it can also be a vehicle for unleashing your deepest feelings, letting them free to flutter through the world.  ~ Roberto Lucas ( Denpa Fuzz )"},{"album_title":"KAL-EL – ASTRAL VOYAGER VOL. 1","album_title_citation":"https://doomcharts.com/2025/06/06/doom-charts-may-2025/","bandcamp_link":"https://kal-el.bandcamp.com/album/astral-voyager-vol-1-scandinavian-european-version","bandcamp_embed_code":"<iframe style=\"border: 0; width: 100%; height: 120px;\" src=\"https://bandcamp.com/EmbeddedPlayer/v=2/album=2946492247/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=small/\" seamless><a href=\"https://kal-el.bandcamp.com/album/astral-voyager-vol-1-scandinavian-european-version\">ASTRAL VOYAGER VOL. 1 by KAL-EL</a></iframe>","doomcharts_review_text":"Astral Voyager Vol. 1 is a stellar addition to KAL-EL's discography. It's an album that rewards repeated listens, revealing new layers each time. Whether you're a longtime fan or new to the band, this release is worth your time. It's heavy, it's atmospheric, and it's got a story to tell. ~ Michael D'Amato ( Playgroundz Rocks , D'Amato Production )\n\nKAL-EL's latest album may draw from classic stoner and doom roots, but it's anything but by-the-numbers.  Packed with cinematic world-building and interstellar atmosphere, it plays more like a sci-fi epic than a standard riff fest. From crushing doom to blazing rock and spaced-out psychedelia, each track unfolds like a chapter in a larger cosmic saga—boldly paving the way for Vol. 2. ~ Ryan Foster ( Slightly Fuzzed )"},{"album_title":"GOYA – IN THE DAWN OF NOVEMBER","album_title_citation":"https://doomcharts.com/2025/07/04/doom-charts-june-2025/","bandcamp_link":"https://marijuana.bandcamp.com/album/in-the-dawn-of-november","bandcamp_embed_code":"<iframe style=\"border: 0; width: 100%; height: 120px;\" src=\"https://bandcamp.com/EmbeddedPlayer/v=2/album=3175864082/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=small/\" seamless><a href=\"https://marijuana.bandcamp.com/album/in-the-dawn-of-november\">IN THE DAWN OF NOVEMBER by GOYA</a></iframe>","doomcharts_review_text":"Descending from glacial altitudes down to the fiery gates of the underworld, GOYA has returned with the monumental album In the Dawn of November. It's a crushingly heavy and melodic album that oozes despair while pointing the middle finger to the heavens. The production is excellent, highlighting the band in every facet.  Although the bass and guitar tones are especially thick which help capture the weighty feel of the compositions.  The album cover (as well as the album itself) is a favorite of the year and only reminds us of how we long for the wintry November days ahead. ~ Jon McGough ( Stoner Rock Army , Stoner HiVe , Outlaws Of The Sun )\n\nDo you like your doom heavy, tuned low, chock filled with riffs, and super depressing? Well, the six songs on the new GOYA record, In The Dawn Of November, are here for you in a big way. How big? How about bringing in legend Jack Endino behind the board, and you can certainly tell he has his fingerprints all over this record. There are not enough super heavy yet very accessible records out there, but now we have In The Dawn Of November to change all that. Heavy, doomy, melodic, expertly played, perfectly produced, and enough sadness to make you an emotional wreck, the new GOYA record rules and is a for sure album of the year candidate and one of my favorite doom records in a very long time. ~ Rich Piva ( Musipedia of Metal , FuzzDoomRip , Rich & Turbo's Heavy Half Hour )"},{"album_title":"MARGARITA WITCH CULT – STRUNG OUT IN HELL","album_title_citation":"https://doomcharts.com/2025/08/01/doom-charts-july-2025/","bandcamp_link":"https://heavypsychsoundsrecords.bandcamp.com/album/margarita-witch-cult-strung-out-in-hell","bandcamp_embed_code":"<iframe style=\"border: 0; width: 100%; height: 120px;\" src=\"https://bandcamp.com/EmbeddedPlayer/v=2/album=273274902/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=small/\" seamless><a href=\"https://heavypsychsoundsrecords.bandcamp.com/album/margarita-witch-cult-strung-out-in-hell\">STRUNG OUT IN HELL by MARGARITA WITCH CULT</a></iframe>","doomcharts_review_text":"Birmingham, UK band MARGARITA WITCH CULT had one of the surprise debuts of 2023; their universally loved self-titled record was a 30-minute blast of catchy and evil proto goodness. Record number two, Strung Out In Hell, maintains their great understanding of melody, ability to create earworms, and killer proto metal stylings from their first record while expanding the listener's experience, incorporating other styles (Unsane and Helmet vibes on Dig Your Way Out for example) and just flat out ripping it up. Plus, you know a band is killer when they can do an un-cringy Billy Idol cover.  ~ Rich Piva ( Musipedia of Metal , FuzzDoomRip , Rich & Turbo's Heavy Half Hour )\n\nThe English stoner band based in Birmingham, home of Black Sabbath, is back with his second album.  Three years after the self title record, MARGARITA WITCH CULT are faithful and close to their sound, which is a modern and faster version of Sabbath riffs.  Loud, raw, and melodic, Strung Out In Hell is a very good surprise with a furious and intense rock n roll energy.  You'll never get bored because each song is a gem.  Cherry on the sundae:  a cover of Billy Idol's White Wedding classic song in a heavier way of course! In The Fool, you will even find some trumpet!  Sludge, proto metal mixed altogether with psychedelic and doom elements, that's the tasty recipe that the three amigos will offer you. The record is fresh and original and I really enjoy every note of their unique sound.  Strung Out In Hell will be on my top rated albums of 2025, that's for sure.  ~ Édouard Dubuisson ( Les chroniques d'Eddy , MetalUniverse )"},{"album_title":"BORRACHO – OUROBOROS","album_title_citation":"https://doomcharts.com/2025/09/04/doom-charts-august-2025/","bandcamp_link":"https://borracho.bandcamp.com/album/ouroboros","bandcamp_embed_code":"<iframe style=\"border: 0; width: 100%; height: 120px;\" src=\"https://bandcamp.com/EmbeddedPlayer/v=2/album=442753627/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=small/\" seamless><a href=\"https://borracho.bandcamp.com/album/ouroboros\">OUROBOROS by BORRACHO</a></iframe>","doomcharts_review_text":"A new BORRACHO record is always reason to celebrate, as the Washington DC riff dealers have been slinging their stuff for almost 20 years now and have never put out anything that was not great, heavy stoner rock awesomeness.  BORRACHO is one of the standard bearers of the genre, and their new record, Ouroboros, cements this legacy even further, as the band brings it once again on album number six. Less political but still socially relevant and relatable to the everyman, the songs on Ouroboros continue to have a strong social message without picking sides, outlining the ills of society while piling on the riffs and the heavy.  ~ Rich Piva ( Musipedia of Metal , FuzzDoomRip , Rich & Turbo's Heavy Half Hour )\n\nThe new album OUROBOROS by BORRACHO is another beautifully heavy step in the evolution of the band.  The new record continues the progression of the bands songwriting and riff wrangling adventures.  This band isn't slowing down at all, BORRACHO just keeps getting better every record. Moving in a slightly different direction on OUROBOROS, the songs are punchy and heavy and combine what seems like an impossible blend of raw and refined sounds that compel me to play the record over and over again.  Borracho manages to bring live energy to this recording, a feat not easily accomplished.  The mix is perfect, and each member of the band is outstanding at what they bring to the music. I can't get enough.  ~ S Patrick Brooks ( The Heavy Underground Farm Report , CleanAndSoberStoner )"},{"album_title":"WARCOE – UPON TALL THRONES","album_title_citation":"https://doomcharts.com/2025/10/02/doom-charts-september-2025/","bandcamp_link":"https://warcoe.bandcamp.com/album/upon-tall-thrones","bandcamp_embed_code":"<iframe style=\"border: 0; width: 100%; height: 120px;\" src=\"https://bandcamp.com/EmbeddedPlayer/v=2/album=1667601563/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=small/\" seamless><a href=\"https://warcoe.bandcamp.com/album/upon-tall-thrones\">UPON TALL THRONES by WARCOE</a></iframe>","doomcharts_review_text":"It's always a real pleasure to follow and support a band from its very beginnings. You witness its progress, its evolution, and sometimes even its shifts in direction, all in real time. This is the case for me with WARCOE from Pesaro Italy, who have just released their third album, Upon Tall Thrones, since their beginning in 2021. In my opinion, it's a crucial album in a band's career, which should be the one of maturity.  And that's exactly what Upon Tall Thrones is.  The songwriting is solid, even down to the smallest details—where, as they say, the devil hides.  This bodes well for an occult doom metal album.  While the Black Sabbath influence is still clearly present, it has now been skillfully integrated, and the band has fully developed the unique identity it has been cultivating so successfully since its beginnings. The album is more incisive and darker than its predecessors, yet also more balanced and sensitive. The artwork itself reflects this, further reinforcing the band's identity:  clearer and more narrative than previous releases, it truly reflects the musical content of the album. With Upon Tall Thrones, WARCOE proves that they are now a band fully in control of their faculties, while embracing their influences.  They manage better than any other band to transport us back to the beginning, and these days, that's something truly valuable. ~ Jay Baner ( La Capsule Stoner )\n\nWARCOE'S earliest work won us over with its perfect balance of doom and heavy metal.  Their sophomore album A Place for Demons went on to pique our interest by waxing more acidic, leaning into trippier occult and psychedelic tones.  On their latest album Upon Tall Thrones, WARCOE continues to draw upon these sounds, playing them louder and with more energy than ever.  The band also uses their proto metal influence to break up some of the more dismal or serious auras brought about by the weightiness of doom, while also incorporating some well-developed instrumental interludes. This adds a very noticeable amount of dimension to WARCOE'S sound and naturally sharpens their storytelling ability. The scenes the band builds are more vivid than ever, and a captivating saga bursts through the album with striking clarity. It's safe to say that these developments make Upon Tall Thrones WARCOE'S most heavy hitting yet, a release on which both sound and substance are bigger and bolder than ever before. ~ Stephanie Zalta ( DoomCakes , Screaming From The Heavy Underground )"},{"album_title":"HOWLING GIANT – CRUCIBLE & RUIN","album_title_citation":"https://doomcharts.com/2025/11/07/doom-charts-october-2025/","bandcamp_link":"https://howlinggiant.bandcamp.com/album/crucible-ruin","bandcamp_embed_code":"<iframe style=\"border: 0; width: 100%; height: 120px;\" src=\"https://bandcamp.com/EmbeddedPlayer/v=2/album=578609549/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=small/\" seamless><a href=\"https://howlinggiant.bandcamp.com/album/crucible-ruin\">CRUCIBLE & RUIN by HOWLING GIANT</a></iframe>","doomcharts_review_text":"Crucible & Ruin shows that if there is a next heavy underground band to take the Elder/King Buffalo leap to the next level, it is HOWLING GIANT. Why, you say?  Zach Wheeler's drumming is off the charts, showing he is one of the best players out there today. Sebastian Baltes hangs right with Zach in keeping down the low end and anchoring all of the amazing stuff coming at you. The addition of Adrian Zambrano as a second guitar and fourth member has brought both a new level of musicianship and a bigger overall sound that makes all of these songs just huge.  Vocalist/guitarist Tom Polzine just rips it up with his axe work and the best vocal performance of his career. The sound that has been captured is pretty much perfect, while the songwriting is next level as well. It would have been easy to continue down a more melodic hard rock path like their last album, but instead Crucible & Ruin is the most complex, heavy, progressive group of songs, that takes their sound to the stratosphere.  A for sure album of the year candidate and a must listen for everyone. ~ Rich Piva ( Musipedia of Metal , FuzzDoomRip , Rich & Turbo's Heavy Half Hour )"},{"album_title":"WINDS OF NEPTUNE – WINDS OF NEPTUNE","album_title_citation":"https://doomcharts.com/2025/12/05/doom-charts-november-2025/","bandcamp_link":"https://smallstone.bandcamp.com/album/winds-of-neptune","bandcamp_embed_code":"<iframe style=\"border: 0; width: 100%; height: 120px;\" src=\"https://bandcamp.com/EmbeddedPlayer/v=2/album=2922909570/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=small/\" seamless><a href=\"https://smallstone.bandcamp.com/album/winds-of-neptune\">WINDS OF NEPTUNE by WINDS OF NEPTUNE</a></iframe>","doomcharts_review_text":"Michigan-based trio WINDS OF NEPTUNE stands out among the flood of heavy rock releases this month for bringing the grit and sweat to the party, along with a more progressive style.  While their full-length self-titled debut certainly includes some hypnotic psychedelic respites in the mix, it's the high-octane freeway jams, leather-and-bellbottoms vibes, wailing guitar, and liberating grooves that more distinctly represent American pop culture during the Anything Goes Decade of the 70s. One of my favorite things about the album, however, is the underlying spacey feel it carries throughout, framing the imagery of WINDS OF NEPTUNE'S songs with a lysergic sci-fi aura that pairs incredibly well with the band's overall sound. This is a killer, no-skip album from start to finish.  ~ Stephanie Zalta ( DoomCakes , Screaming From The Heavy Underground )\n\nHailing from Detroit, USA, WINDS OF NEPTUNE is a trio who have just released their debut album on the Small Stone Records label.  However, the three guys who make up the band are not newcomers but rather veterans of the Detroit music scene and they have known each other for a long time. The band formed during lockdown, and this self-titled debut album features all the songs they have written since then.  And it's a complete success!  Despite being the result of several years' work, the album is completely cohesive, sweeping us away in a frenzy of devastating riffs which instantly takes us back to the 70s, while also incorporating more modern influences. It's a delight from beginning to end, and you'll immediately want to play it again.  ~ Jay Baner ( La Capsule Stoner )"},{"album_title":"PALM DESERT – RAYS OF THE GOLD AND GRAYS","album_title_citation":"https://doomcharts.com/2026/01/02/doom-charts-december-2025/","bandcamp_link":"https://palmdesert.bandcamp.com/album/rays-of-the-gold-and-grays","bandcamp_embed_code":"<iframe style=\"border: 0; width: 100%; height: 120px;\" src=\"https://bandcamp.com/EmbeddedPlayer/v=2/album=488790942/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=small/\" seamless><a href=\"https://palmdesert.bandcamp.com/album/rays-of-the-gold-and-grays\">RAYS OF THE GOLD AND GRAYS by PALM DESERT</a></iframe>","doomcharts_review_text":"To say that PALM DESERT still has it on Rays of the Gold and Grays, their first album in nearly a decade, would be a gross understatement. In fact, the band is stronger than ever, delivering their soaring stoner/desert riffs, gritty bursts of energy, hypnotic breakdowns, and ultra expressive vocals like absolutely no time has passed.  Overall, this release has a noticeably more optimistic atmosphere than some of PALM DESERT'S previous albums, on which there were some discernible storm clouds lurking behind the sunny grooves. The energy and emotive expressiveness the band historically brought to the table are still very much there, but in a lighter and airier format that makes it even easier to jet off on a captivating mind flight as these eight songs wash over you. ~ Stephanie Zalta ( DoomCakes , Screaming From The Heavy Underground )\n\nYears in the waiting and in the making, it was a glorious day when the new album Rays of the Gold and Grays was announced, and even more glorious when it finally hit our ears.  PALM DESERT follows the blueprint laid down by the early pioneers (and of course the band name correlates to that Californian scene) of Stoner Rock, delivering a groove-filled, fuzz-drenched adventure across sunbaked dunes.  Killer vocals, scorching lead guitar, and did I mention the fuzz? If you need more proof, this album has already landed on many of the contributors end-of-the-year lists.  So, what are you waiting for? ~ Jon McGough ( Stoner Rock Army , Stoner HiVe , Outlaws Of The Sun )"}]};
+
+    function getMonthName(citation) {
+      const match = citation.match(/\/(\d{4})\/(\d{2})\//);
+      if (match) {
+        const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+        const monthIndex = parseInt(match[2]) - 1;
+        return `${months[monthIndex]} ${match[1]}`;
+      }
+      return '';
+    }
+
+    function getMonthFromCitation(citation) {
+      const match = citation.match(/\/(\d{4})\/(\d{2})\//);
+      if (match) {
+        return parseInt(match[1]) * 100 + parseInt(match[2]);
+      }
+      return 0;
+    }
+
+    function formatReviewText(text) {
+      const paragraphs = text.split('\n\n').filter(p => p.trim());
+      return paragraphs.map(p => `<p>${p.trim()}</p>`).join('');
+    }
+
+    function initApp() {
+      const albumsContainer = document.getElementById('albums');
+      const currentUrl = window.location.href;
+      
+      document.getElementById('twitter-share').href = `https://twitter.com/intent/tweet?url=${encodeURIComponent(currentUrl)}&text=${encodeURIComponent('Check out DoomCharts Top Albums of 2025!')}`;
+      document.getElementById('facebook-share').href = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(currentUrl)}`;
+      document.getElementById('reddit-share').href = `https://www.reddit.com/submit?url=${encodeURIComponent(currentUrl)}&title=${encodeURIComponent('DoomCharts Top Albums of 2025')}`;
+
+      albumsContainer.innerHTML = '';
+
+      const sortedAlbums = [...albumData.doomcharts_number_one_albums].sort((a, b) => {
+        return getMonthFromCitation(a.album_title_citation) - getMonthFromCitation(b.album_title_citation);
+      });
+
+      sortedAlbums.forEach(album => {
+        const albumCard = document.createElement('div');
+        albumCard.className = 'album-card';
+        const monthName = getMonthName(album.album_title_citation);
+        const formattedReview = formatReviewText(album.doomcharts_review_text);
+
+        albumCard.innerHTML = `
+          <div class="album-header">
+            <h2>${album.album_title}</h2>
+            <div class="month-badge">#1 Album - ${monthName}</div>
+          </div>
+          <div class="album-content">
+            <div class="review-section">
+              <strong>Review:</strong>
+              ${formattedReview}
+            </div>
+            <div class="bandcamp-embed">${album.bandcamp_embed_code}</div>
+            <div class="social-share">
+              <a href="https://twitter.com/intent/tweet?url=${encodeURIComponent(album.bandcamp_link)}&text=${encodeURIComponent('Check out ' + album.album_title + '!')}" class="btn-share" target="_blank">Share on Twitter</a>
+            </div>
+          </div>
+        `;
+
+        albumsContainer.appendChild(albumCard);
+      });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initApp);
+    } else {
+      initApp();
+    }
+  </script>
+</body>
+
+</html>
